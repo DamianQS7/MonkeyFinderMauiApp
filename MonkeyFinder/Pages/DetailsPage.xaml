@@ -1,53 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModel="clr-namespace:MonkeyFinder.ViewModel"
-             x:DataType="viewModel:MonkeyDetailsViewModel"
-             x:Class="MonkeyFinder.Pages.DetailsPage"
-             Title="{Binding Monkey.Name}">
+<ContentPage
+    x:Class="MonkeyFinder.Pages.DetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModel="clr-namespace:MonkeyFinder.ViewModel"
+    Title="{Binding Monkey.Name}"
+    x:DataType="viewModel:MonkeyDetailsViewModel">
 
     <ScrollView>
 
         <VerticalStackLayout>
-            <Grid RowDefinitions="160,*"
-                  ColumnDefinitions="*,Auto,*">
+            <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="160,*">
+
                 <BoxView
-                    BackgroundColor="AliceBlue"
                     Grid.ColumnSpan="3"
+                    HeightRequest="160"
                     HorizontalOptions="FillAndExpand"
-                    HeightRequest="160"/>
+                    Color="Aquamarine" />
 
-                <Frame Grid.RowSpan="2"
-                       Grid.Column="1"
-                       HeightRequest="160"
-                       WidthRequest="160"
-                       CornerRadius="80"
-                       HorizontalOptions="Center"
-                       IsClippedToBounds="True"
-                       Padding="0"
-                       Margin="0,80,0,0">
 
-                    <Image Aspect="AspectFill"
-                           HeightRequest="160"
-                           WidthRequest="160"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           Source="{Binding Monkey.Image}" />
+                <Border
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    Margin="0,50,10,0"
+                    Padding="0"
+                    HeightRequest="180"
+                    HorizontalOptions="Center"
+                    Stroke="White"
+                    StrokeShape="RoundRectangle 90"
+                    StrokeThickness="6"
+                    VerticalOptions="Center"
+                    WidthRequest="180">
 
-                </Frame>
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="160"
+                        HorizontalOptions="Center"
+                        Source="{Binding Monkey.Image}"
+                        VerticalOptions="Center"
+                        WidthRequest="160" />
+                </Border>
+
+                <!--<Frame
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    Margin="0,50,0,0"
+                    Padding="0"
+                    CornerRadius="80"
+                    HeightRequest="160"
+                    HorizontalOptions="Center"
+                    IsClippedToBounds="True"
+                    WidthRequest="160">
+
+                </Frame>-->
 
             </Grid>
 
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label Text="{Binding Monkey.Details}"/>
-                <Label Text="{Binding Monkey.Location, StringFormat='Location: {0}'}"/>
-                <Label Text="{Binding Monkey.Population, StringFormat='Population: {0}'}"/>
+                <Label Text="{Binding Monkey.Details}" />
+                <Label Text="{Binding Monkey.Location, StringFormat='Location: {0}'}" />
+                <Label Text="{Binding Monkey.Population, StringFormat='Population: {0}'}" />
 
             </VerticalStackLayout>
 
         </VerticalStackLayout>
 
     </ScrollView>
-    
-    
+
+
 </ContentPage>
