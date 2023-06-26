@@ -8,48 +8,44 @@
 
     <ScrollView>
 
-        <Grid RowDefinitions="Auto,Auto,*">
+        <VerticalStackLayout>
+            <Grid RowDefinitions="160,*"
+                  ColumnDefinitions="*,Auto,*">
+                <BoxView
+                    BackgroundColor="AliceBlue"
+                    Grid.ColumnSpan="3"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="160"/>
 
-            <BoxView
-                BackgroundColor="{StaticResource Primary}"
-                Grid.RowSpan="3"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill"/>
+                <Frame Grid.RowSpan="2"
+                       Grid.Column="1"
+                       HeightRequest="160"
+                       WidthRequest="160"
+                       CornerRadius="80"
+                       HorizontalOptions="Center"
+                       IsClippedToBounds="True"
+                       Padding="0"
+                       Margin="0,80,0,0">
 
-            <Border StrokeShape="RoundRectangle 80"
-                    Stroke="White"
-                    StrokeThickness="6"
-                    HeightRequest="160"
-                    WidthRequest="160"
-                    Margin="0,80,0,0"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
+                    <Image Aspect="AspectFill"
+                           HeightRequest="160"
+                           WidthRequest="160"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="{Binding Monkey.Image}" />
 
-                <Image Aspect="AspectFill"
-                        HeightRequest="160"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Source="{Binding Monkey.Image}"
-                        WidthRequest="160"/>
-                
-            </Border>
+                </Frame>
 
-            <Label
-                Style="{StaticResource LargeLabel}" 
-                Grid.Row="1"
-                TextColor="White"
-                FontAttributes="Bold"
-                Text="{Binding Monkey.Name}" 
-                HorizontalOptions="Center"
-                Margin="0,0,0,8"/>
+            </Grid>
 
-            <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
-                <Label Style="{StaticResource MediumLabel}" Text="{Binding Monkey.Details}" />
-                <Label Style="{StaticResource SmallLabel}" Text="{Binding Monkey.Location, StringFormat='Location: {0}'}" />
-                <Label Style="{StaticResource SmallLabel}" Text="{Binding Monkey.Population, StringFormat='Population: {0}'}" />
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Label Text="{Binding Monkey.Details}"/>
+                <Label Text="{Binding Monkey.Location, StringFormat='Location: {0}'}"/>
+                <Label Text="{Binding Monkey.Population, StringFormat='Population: {0}'}"/>
+
             </VerticalStackLayout>
 
-        </Grid>
+        </VerticalStackLayout>
 
     </ScrollView>
     

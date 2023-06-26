@@ -5,13 +5,17 @@ namespace MonkeyFinder.ViewModel
 {
 	public partial class MonkeysViewModel : BaseViewModel
 	{
-		MonkeyService monkeyService;
+		MonkeyService _monkeyService;
+        IConnectivity _connectivity;
+        IGeolocation _geolocation;
 		public ObservableCollection<Monkey> Monkeys { get; } = new ObservableCollection<Monkey>();
 
-		public MonkeysViewModel(MonkeyService service)
+		public MonkeysViewModel(MonkeyService service, IConnectivity connectivity, IGeolocation geolocation)
 		{
 			Title = "Monkey Finder";
-			monkeyService = service;
+			_monkeyService = service;
+            _connectivity = connectivity;
+            _geolocation = geolocation;
 		}
 
         [RelayCommand]
@@ -21,9 +25,15 @@ namespace MonkeyFinder.ViewModel
 
             try
             {
+                if(_connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await Shell.Current.DisplayAlert("Internet Issue", "Check your internet and try again!", "Ok");
+                    return;
+                }
+
                 IsBusy = true;
 
-                var monkeys = await monkeyService.GetMonkeys();
+                var monkeys = await _monkeyService.GetMonkeys();
 
                 if (Monkeys.Count != 0)
                     Monkeys.Clear();
