@@ -41,4 +41,10 @@
     <Color x:Key="Blue200Accent">#72ACF1</Color>
     <Color x:Key="Blue300Accent">#A7CBF6</Color>
 
+    <Color x:Key="CardBackground">White</Color>
+    <Color x:Key="CardBackgroundDark">#1C1C1E</Color>
+
+    <Color x:Key="LabelText">#1F1F1F</Color>
+    <Color x:Key="LabelTextDark">White</Color>
+
 </ResourceDictionary>
